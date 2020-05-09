@@ -6,9 +6,9 @@ import { microservices } from './config';
 @Injectable()
 export class AppService {
   constructor(
-    @Inject(microservices.serviceA) private readonly clientServiceA: ClientProxy,
-    @Inject(microservices.serviceB) private readonly clientServiceB: ClientProxy,
-    @Inject(microservices.serviceC) private readonly clientServiceC: ClientProxy,
+    @Inject(microservices.serviceA.name) private readonly clientServiceA: ClientProxy,
+    @Inject(microservices.serviceB.name) private readonly clientServiceB: ClientProxy,
+    @Inject(microservices.serviceC.name) private readonly clientServiceC: ClientProxy,
   ) { }
 
   pingServiceA() {

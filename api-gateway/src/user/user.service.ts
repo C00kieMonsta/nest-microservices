@@ -8,7 +8,7 @@ import { microservices } from '../config';
 export class UserService {
 
     constructor(
-        @Inject(microservices.serviceUser) private readonly clientServiceUser: ClientProxy,
+        @Inject(microservices.serviceUser.name) private readonly clientServiceUser: ClientProxy,
     ) { }
 
     createUser(payload) {
