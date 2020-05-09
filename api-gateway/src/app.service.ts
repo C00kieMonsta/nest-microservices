@@ -1,14 +1,15 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { map } from 'rxjs/operators';
+import { microservices } from './config';
 
 @Injectable()
 export class AppService {
   constructor(
-    @Inject('SERVICE_A') private readonly clientServiceA: ClientProxy,
-    @Inject('SERVICE_B') private readonly clientServiceB: ClientProxy,
-    @Inject('SERVICE_C') private readonly clientServiceC: ClientProxy,
-  ) {}
+    @Inject(microservices.serviceA) private readonly clientServiceA: ClientProxy,
+    @Inject(microservices.serviceB) private readonly clientServiceB: ClientProxy,
+    @Inject(microservices.serviceC) private readonly clientServiceC: ClientProxy,
+  ) { }
 
   pingServiceA() {
     const start = Date.now();
@@ -20,7 +21,7 @@ export class AppService {
         map((message: string) => ({ message, duration: Date.now() - start }))
       );
   }
-  
+
   pingServiceB() {
     const start = Date.now();
     const pattern = { cmd: 'ping' };
@@ -31,7 +32,7 @@ export class AppService {
         map((message: string) => ({ message, duration: Date.now() - start }))
       );
   }
-  
+
   pingServiceC() {
     const start = Date.now();
     const pattern = { cmd: 'ping' };

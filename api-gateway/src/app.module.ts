@@ -3,12 +3,14 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
+import { microservices } from './config';
 
 @Module({
   imports: [
     ClientsModule.register([
       {
-        name: 'SERVICE_A',
+        name: microservices.serviceA,
         transport: Transport.TCP,
         options: {
           host: '127.0.0.1',
@@ -16,7 +18,7 @@ import { AppService } from './app.service';
         }
       },
       {
-        name: 'SERVICE_B',
+        name: microservices.serviceB,
         transport: Transport.TCP,
         options: {
           host: '127.0.0.1',
@@ -24,14 +26,15 @@ import { AppService } from './app.service';
         }
       },
       {
-        name: 'SERVICE_C',
+        name: microservices.serviceC,
         transport: Transport.TCP,
         options: {
           host: '127.0.0.1',
           port: 8890
         }
       }
-    ])
+    ]),
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService]
