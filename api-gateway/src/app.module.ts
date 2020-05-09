@@ -5,36 +5,38 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { microservices } from './config';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
     ClientsModule.register([
       {
-        name: microservices.serviceA,
+        name: microservices.serviceA.name,
         transport: Transport.TCP,
         options: {
           host: '127.0.0.1',
-          port: 8888
+          port: microservices.serviceA.port,
         }
       },
       {
-        name: microservices.serviceB,
+        name: microservices.serviceB.name,
         transport: Transport.TCP,
         options: {
           host: '127.0.0.1',
-          port: 8889
+          port: microservices.serviceB.port,
         }
       },
       {
-        name: microservices.serviceC,
+        name: microservices.serviceC.name,
         transport: Transport.TCP,
         options: {
           host: '127.0.0.1',
-          port: 8890
+          port: microservices.serviceC.port,
         }
       }
     ]),
-    AuthModule
+    AuthModule,
+    UserModule
   ],
   controllers: [AppController],
   providers: [AppService]

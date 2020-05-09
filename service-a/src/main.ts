@@ -11,7 +11,7 @@ async function bootstrap() {
     transport: Transport.TCP,
     options: {
       host: '127.0.0.1',
-      port: 8888
+      port: 8880
     }
   });
   app.listen(() => logger.log('Microservice A is listening'));

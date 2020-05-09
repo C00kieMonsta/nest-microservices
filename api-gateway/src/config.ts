@@ -4,8 +4,20 @@ export const expirationTime = '1h';
 
 // Microservices configs
 export const microservices = {
-    serviceA: 'SERVICE_A',
-    serviceB: 'SERVICE_B',
-    serviceC: 'SERVICE_C',
-    serviceUser: 'SERVICE_USER',
+    serviceA: {
+        name: 'SERVICE_A',
+        port: 8880,
+    },
+    serviceB: {
+        name: 'SERVICE_B',
+        port: 8881,
+    },
+    serviceC: {
+        name: 'SERVICE_C',
+        port: 8882,
+    },
+    serviceUser: {
+        name: 'SERVICE_USER',
+        port: 8883,
+    },
 }

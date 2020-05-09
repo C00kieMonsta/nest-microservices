@@ -4,18 +4,18 @@ import { JwtModule } from '@nestjs/jwt';
 
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
-import { jwtSecret, expirationTime, microservices } from '../config';
 import { LocalStrategy } from './local.strategy';
+import { jwtSecret, expirationTime, microservices } from '../config';
 
 @Module({
   imports: [
     ClientsModule.register([
       {
-        name: microservices.serviceUser,
+        name: microservices.serviceUser.name,
         transport: Transport.TCP,
         options: {
           host: '127.0.0.1',
-          port: 8891
+          port: microservices.serviceUser.port,
         }
       }
     ]),
@@ -27,4 +27,4 @@ import { LocalStrategy } from './local.strategy';
   providers: [AuthService, LocalStrategy],
   controllers: [AuthController]
 })
-export class AuthModule {}
+export class AuthModule { }

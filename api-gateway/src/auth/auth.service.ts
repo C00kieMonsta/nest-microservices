@@ -4,10 +4,12 @@ import { ClientProxy } from '@nestjs/microservices';
 import { compareSync } from 'bcrypt';
 import { timeout, catchError } from 'rxjs/operators';
 import { TimeoutError, throwError } from 'rxjs';
+
 import { microservices } from '../config';
 
 @Injectable()
 export class AuthService {
+
     constructor(
         @Inject(microservices.serviceUser) private readonly clientServiceUser: ClientProxy,
         private readonly jwtService: JwtService,
