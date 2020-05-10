@@ -18,6 +18,8 @@ export class AuthService {
     // does the user exists
     async validateUser(username: string, password: string): Promise<any> {
         try {
+
+            // check if user exists - call user microservice
             const user = await this.clientServiceUser.send({ role: 'user', cmd: 'get' }, { username })
                 .pipe(
                     timeout(5000),

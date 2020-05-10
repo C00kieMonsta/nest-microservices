@@ -11,13 +11,22 @@ export class UserService {
         @Inject(microservices.serviceUser.name) private readonly clientServiceUser: ClientProxy,
     ) { }
 
-    createUser(payload) {
+    createUser(payload: any) {
         const start = Date.now();
         const pattern = { role: 'user', cmd: 'create' };
         return this.clientServiceUser
             .send<string>(pattern, payload)
             .pipe(
                 map((message: string) => ({ message, duration: Date.now() - start }))
+            );
+    }
+
+    getUser(username: string) {
+        const pattern = { role: 'user', cmd: 'get' };
+        return this.clientServiceUser
+            .send<string>(pattern, { username })
+            .pipe(
+                map((user: any) => user)
             );
     }
 

@@ -25,6 +25,7 @@ export class UserController {
     // connect
     @MessagePattern({ role: 'user', cmd: 'get' })
     getUser(data: any): Promise<User> {
+        console.log(data);
         return this.userService.findOne({ username: data.username });
     }
 
