@@ -6,4 +6,4 @@ Testing microservices with nestJS framework.
 
 1. API Gateway - at the front line, responsible to dispatch all api calls to the right service. The API Gateway is a hybrid application, one that both listens for HTTP requests, as well as makes use of connected microservices.
 
-2. Microservices
+2. Microservices with and without auth access
