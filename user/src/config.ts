@@ -1,1 +1,0 @@
-export const apiGatewayClient = 'API_GATEWAY';
