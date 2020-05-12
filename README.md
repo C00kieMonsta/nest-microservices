@@ -8,5 +8,6 @@ Testing microservices with nestJS framework.
 
 - https://www.nginx.com/blog/building-microservices-using-an-api-gateway/
 - https://sdtimes.com/apis/securing-microservices-the-api-gateway-authentication-and-authorization/
+- Hybrid ms: https://thenewstack.io/why-a-microservices-hybrid-model-is-what-you-probably-need-instead/
 
 2. Microservices with and without auth access. Accessed through TCP messaging between API Gateway and Service...
